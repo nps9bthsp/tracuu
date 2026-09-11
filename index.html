@@ -498,21 +498,23 @@
                     ? 'bg-red-100 text-red-700 border-red-200' 
                     : 'bg-green-100 text-green-700 border-green-200';
 
-                // Thay đổi toàn bộ class text-sm thành text-base trong các thẻ <td> để chữ to hơn, badge đổi thành text-sm
+                // Đã sửa: Bổ sung align-top để các cột căn ngang nhau, và đưa line-clamp-2 vào bên trong thẻ <div> thay vì nằm trực tiếp trên thẻ <td>
                 tr.innerHTML = `
-                    <td class="px-4 py-4 whitespace-nowrap text-center text-base font-medium text-gray-500 border-b border-gray-100 group-hover:border-blue-100">${index + 1}</td>
-                    <td class="px-4 py-4 whitespace-nowrap text-base font-bold text-blue-600 border-b border-gray-100 group-hover:border-blue-100">${highlightText(row.mst, keyword)}</td>
-                    <td class="px-4 py-4 text-base font-semibold text-gray-800 border-b border-gray-100 group-hover:border-blue-100">${highlightText(row.name, keyword)}</td>
-                    <td class="px-4 py-4 text-base text-gray-700 border-b border-gray-100 group-hover:border-blue-100">${escapeHTML(row.rep)}</td>
-                    <td class="px-4 py-4 whitespace-nowrap text-base font-medium text-gray-600 border-b border-gray-100 group-hover:border-blue-100">${highlightText(row.cccd, keyword)}</td>
-                    <td class="px-4 py-4 text-base text-gray-600 border-b border-gray-100 group-hover:border-blue-100 line-clamp-2" title="${escapeHTML(row.industry)}">${escapeHTML(row.industry)}</td>
-                    <td class="px-4 py-4 text-base text-gray-600 border-b border-gray-100 group-hover:border-blue-100">${escapeHTML(row.address)} ${row.ward ? '- ' + escapeHTML(row.ward) : ''}</td>
-                    <td class="px-4 py-4 whitespace-nowrap text-base border-b border-gray-100 group-hover:border-blue-100">
+                    <td class="px-4 py-4 align-top whitespace-nowrap text-center text-base font-medium text-gray-500 border-b border-gray-100 group-hover:border-blue-100">${index + 1}</td>
+                    <td class="px-4 py-4 align-top whitespace-nowrap text-base font-bold text-blue-600 border-b border-gray-100 group-hover:border-blue-100">${highlightText(row.mst, keyword)}</td>
+                    <td class="px-4 py-4 align-top text-base font-semibold text-gray-800 border-b border-gray-100 group-hover:border-blue-100">${highlightText(row.name, keyword)}</td>
+                    <td class="px-4 py-4 align-top text-base text-gray-700 border-b border-gray-100 group-hover:border-blue-100">${escapeHTML(row.rep)}</td>
+                    <td class="px-4 py-4 align-top whitespace-nowrap text-base font-medium text-gray-600 border-b border-gray-100 group-hover:border-blue-100">${highlightText(row.cccd, keyword)}</td>
+                    <td class="px-4 py-4 align-top text-base text-gray-600 border-b border-gray-100 group-hover:border-blue-100" title="${escapeHTML(row.industry)}">
+                        <div class="line-clamp-2">${escapeHTML(row.industry)}</div>
+                    </td>
+                    <td class="px-4 py-4 align-top text-base text-gray-600 border-b border-gray-100 group-hover:border-blue-100">${escapeHTML(row.address)} ${row.ward ? '- ' + escapeHTML(row.ward) : ''}</td>
+                    <td class="px-4 py-4 align-top whitespace-nowrap text-base border-b border-gray-100 group-hover:border-blue-100">
                         <span class="px-2.5 py-1 rounded-full text-sm font-medium border ${statusBadge}">
                             ${safeStatus || 'Không xác định'}
                         </span>
                     </td>
-                    <td class="px-4 py-4 whitespace-nowrap text-base font-semibold text-blue-800 bg-blue-50/30 border-b border-gray-100 group-hover:border-blue-100">${escapeHTML(row.manager)}</td>
+                    <td class="px-4 py-4 align-top whitespace-nowrap text-base font-semibold text-blue-800 bg-blue-50/30 border-b border-gray-100 group-hover:border-blue-100">${escapeHTML(row.manager)}</td>
                 `;
                 resultBody.appendChild(tr);
             });
