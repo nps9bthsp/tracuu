@@ -521,8 +521,8 @@
                     <td class="px-4 py-4 align-top text-base font-semibold text-gray-800 border-b border-gray-100 group-hover:border-blue-100">${highlightText(row.name, keyword)}</td>
                     <td class="px-4 py-4 align-top text-base text-gray-700 border-b border-gray-100 group-hover:border-blue-100">${escapeHTML(row.rep)}</td>
                     <td class="px-4 py-4 align-top whitespace-nowrap text-base font-medium text-gray-600 border-b border-gray-100 group-hover:border-blue-100">${highlightText(row.cccd, keyword)}</td>
-                    <td class="px-4 py-4 align-top text-base text-gray-600 border-b border-gray-100 group-hover:border-blue-100" title="${escapeHTML(row.industry)}">
-                        <div class="line-clamp-2">${escapeHTML(row.industry)}</div>
+                    <td class="px-4 py-4 align-top text-base text-gray-600 border-b border-gray-100 group-hover:border-blue-100">
+                        ${escapeHTML(row.industry)}
                     </td>
                     <td class="px-4 py-4 align-top text-base text-gray-600 border-b border-gray-100 group-hover:border-blue-100">${escapeHTML(row.address)} ${row.ward ? '- ' + escapeHTML(row.ward) : ''}</td>
                     <td class="px-4 py-4 align-top whitespace-nowrap text-base border-b border-gray-100 group-hover:border-blue-100">
