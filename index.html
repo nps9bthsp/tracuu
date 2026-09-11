@@ -45,10 +45,41 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex flex-col md:flex-row justify-between items-center gap-4">
             <div class="flex items-center space-x-4 w-full md:w-auto">
                 <div class="w-16 h-16 bg-white rounded-full flex items-center justify-center p-0.5 shadow-md overflow-hidden relative border-2 border-yellow-400 shrink-0">
-                    <!-- Đã thay đổi đường dẫn logo thành file logo.png -->
-                    <img id="app-logo" src="logo.png" 
-                         onerror="this.src='https://placehold.co/150x150/ffffff/1e3a8a?text=LOGO'" 
-                         alt="Logo Thuế Nhà Nước" class="w-full h-full object-cover rounded-full">
+                    <!-- Đã thay logo bằng biểu tượng Thuế Việt Nam (SVG nội tuyến) để luôn đảm bảo sắc nét và không bao giờ bị lỗi link ảnh -->
+                    <svg id="app-logo" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" class="w-full h-full object-contain rounded-full" aria-label="Logo Thuế Nhà Nước">
+                        <circle cx="60" cy="60" r="58" fill="#DA251D"/>
+                        
+                        <!-- Nhánh lúa -->
+                        <path d="M 60,110 C 10,110 5,45 15,30 C 20,45 10,80 35,95" fill="none" stroke="#FFC627" stroke-width="3" stroke-linecap="round"/>
+                        <path d="M 60,110 C 110,110 115,45 105,30 C 100,45 110,80 85,95" fill="none" stroke="#FFC627" stroke-width="3" stroke-linecap="round"/>
+                        
+                        <!-- Hạt lúa -->
+                        <g fill="#FFC627">
+                            <path d="M 18,35 C 22,35 24,40 22,45 C 15,40 16,35 18,35 Z"/>
+                            <path d="M 21,48 C 27,47 27,52 25,57 C 18,53 18,48 21,48 Z"/>
+                            <path d="M 25,62 C 30,60 31,65 28,70 C 21,66 21,62 25,62 Z"/>
+                            <path d="M 31,75 C 36,72 38,77 35,82 C 28,79 28,75 31,75 Z"/>
+                            
+                            <path d="M 102,35 C 98,35 96,40 98,45 C 105,40 104,35 102,35 Z"/>
+                            <path d="M 99,48 C 93,47 93,52 95,57 C 102,53 102,48 99,48 Z"/>
+                            <path d="M 95,62 C 90,60 89,65 92,70 C 99,66 99,62 95,62 Z"/>
+                            <path d="M 89,75 C 84,72 82,77 85,82 C 92,79 92,75 89,75 Z"/>
+                        </g>
+                        
+                        <!-- Ngôi sao -->
+                        <polygon points="60,10 67,29 89,29 72,42 78,64 60,51 42,64 48,42 31,29 53,29" fill="#FFC627"/>
+                        
+                        <!-- Bánh răng -->
+                        <g transform="translate(60, 102) scale(1.1)">
+                            <path d="M-6,-4 L-3,-10 L3,-10 L6,-4 L12,-2 L10,4 L4,4 L2,10 L-2,10 L-4,4 L-10,4 L-12,-2 Z" fill="#FFC627"/>
+                            <circle cx="0" cy="0" r="5" fill="#DA251D" />
+                            <circle cx="0" cy="0" r="2" fill="#FFC627" />
+                        </g>
+                        
+                        <!-- Text -->
+                        <text x="60" y="78" font-family="Arial, sans-serif" font-weight="bold" font-size="13" fill="#FFC627" text-anchor="middle" letter-spacing="1">THUẾ</text>
+                        <text x="60" y="90" font-family="Arial, sans-serif" font-weight="bold" font-size="9" fill="#FFC627" text-anchor="middle" letter-spacing="0.5">NHÀ NƯỚC</text>
+                    </svg>
                 </div>
                 <div>
                     <!-- Đã thay đổi tiêu đề theo yêu cầu -->
@@ -132,15 +163,16 @@
                 <table class="min-w-full divide-y divide-gray-300 relative">
                     <thead class="bg-gray-100 sticky top-0 z-10 shadow-sm">
                         <tr>
-                            <th scope="col" class="px-4 py-3.5 text-center text-xs font-bold text-gray-700 uppercase w-12 border-b-2 border-gray-300 whitespace-nowrap">STT</th>
-                            <th scope="col" class="px-4 py-3.5 text-left text-xs font-bold text-gray-700 uppercase border-b-2 border-gray-300 whitespace-nowrap">Mã số thuế</th>
-                            <th scope="col" class="px-4 py-3.5 text-left text-xs font-bold text-gray-700 uppercase border-b-2 border-gray-300 min-w-[200px]">Tên doanh nghiệp</th>
-                            <th scope="col" class="px-4 py-3.5 text-left text-xs font-bold text-gray-700 uppercase border-b-2 border-gray-300 min-w-[160px]">Người ĐD PL</th>
-                            <th scope="col" class="px-4 py-3.5 text-left text-xs font-bold text-gray-700 uppercase border-b-2 border-gray-300 whitespace-nowrap">CCCD</th>
-                            <th scope="col" class="px-4 py-3.5 text-left text-xs font-bold text-gray-700 uppercase border-b-2 border-gray-300 min-w-[220px]">Ngành nghề KD</th>
-                            <th scope="col" class="px-4 py-3.5 text-left text-xs font-bold text-gray-700 uppercase border-b-2 border-gray-300 min-w-[250px]">Địa chỉ KD</th>
-                            <th scope="col" class="px-4 py-3.5 text-left text-xs font-bold text-gray-700 uppercase border-b-2 border-gray-300 whitespace-nowrap min-w-[150px]">Trạng thái MST</th>
-                            <th scope="col" class="px-4 py-3.5 text-left text-xs font-bold text-blue-800 bg-blue-100 uppercase border-b-2 border-blue-300 whitespace-nowrap min-w-[150px]">Cán bộ quản lý</th>
+                            <!-- Cỡ chữ tiêu đề bảng được tăng từ text-xs lên text-sm -->
+                            <th scope="col" class="px-4 py-3.5 text-center text-sm font-bold text-gray-700 uppercase w-12 border-b-2 border-gray-300 whitespace-nowrap">STT</th>
+                            <th scope="col" class="px-4 py-3.5 text-left text-sm font-bold text-gray-700 uppercase border-b-2 border-gray-300 whitespace-nowrap">Mã số thuế</th>
+                            <th scope="col" class="px-4 py-3.5 text-left text-sm font-bold text-gray-700 uppercase border-b-2 border-gray-300 min-w-[200px]">Tên doanh nghiệp</th>
+                            <th scope="col" class="px-4 py-3.5 text-left text-sm font-bold text-gray-700 uppercase border-b-2 border-gray-300 min-w-[160px]">Người ĐD PL</th>
+                            <th scope="col" class="px-4 py-3.5 text-left text-sm font-bold text-gray-700 uppercase border-b-2 border-gray-300 whitespace-nowrap">CCCD</th>
+                            <th scope="col" class="px-4 py-3.5 text-left text-sm font-bold text-gray-700 uppercase border-b-2 border-gray-300 min-w-[220px]">Ngành nghề KD</th>
+                            <th scope="col" class="px-4 py-3.5 text-left text-sm font-bold text-gray-700 uppercase border-b-2 border-gray-300 min-w-[250px]">Địa chỉ KD</th>
+                            <th scope="col" class="px-4 py-3.5 text-left text-sm font-bold text-gray-700 uppercase border-b-2 border-gray-300 whitespace-nowrap min-w-[150px]">Trạng thái MST</th>
+                            <th scope="col" class="px-4 py-3.5 text-left text-sm font-bold text-blue-800 bg-blue-100 uppercase border-b-2 border-blue-300 whitespace-nowrap min-w-[150px]">Cán bộ quản lý</th>
                         </tr>
                     </thead>
                     <tbody id="result-body" class="bg-white divide-y divide-gray-200">
@@ -466,20 +498,21 @@
                     ? 'bg-red-100 text-red-700 border-red-200' 
                     : 'bg-green-100 text-green-700 border-green-200';
 
+                // Thay đổi toàn bộ class text-sm thành text-base trong các thẻ <td> để chữ to hơn, badge đổi thành text-sm
                 tr.innerHTML = `
-                    <td class="px-4 py-4 whitespace-nowrap text-center text-sm font-medium text-gray-500 border-b border-gray-100 group-hover:border-blue-100">${index + 1}</td>
-                    <td class="px-4 py-4 whitespace-nowrap text-sm font-bold text-blue-600 border-b border-gray-100 group-hover:border-blue-100">${highlightText(row.mst, keyword)}</td>
-                    <td class="px-4 py-4 text-sm font-semibold text-gray-800 border-b border-gray-100 group-hover:border-blue-100">${highlightText(row.name, keyword)}</td>
-                    <td class="px-4 py-4 text-sm text-gray-700 border-b border-gray-100 group-hover:border-blue-100">${escapeHTML(row.rep)}</td>
-                    <td class="px-4 py-4 whitespace-nowrap text-sm font-medium text-gray-600 border-b border-gray-100 group-hover:border-blue-100">${highlightText(row.cccd, keyword)}</td>
-                    <td class="px-4 py-4 text-sm text-gray-600 border-b border-gray-100 group-hover:border-blue-100 line-clamp-2" title="${escapeHTML(row.industry)}">${escapeHTML(row.industry)}</td>
-                    <td class="px-4 py-4 text-sm text-gray-600 border-b border-gray-100 group-hover:border-blue-100">${escapeHTML(row.address)} ${row.ward ? '- ' + escapeHTML(row.ward) : ''}</td>
-                    <td class="px-4 py-4 whitespace-nowrap text-sm border-b border-gray-100 group-hover:border-blue-100">
-                        <span class="px-2.5 py-1 rounded-full text-xs font-medium border ${statusBadge}">
+                    <td class="px-4 py-4 whitespace-nowrap text-center text-base font-medium text-gray-500 border-b border-gray-100 group-hover:border-blue-100">${index + 1}</td>
+                    <td class="px-4 py-4 whitespace-nowrap text-base font-bold text-blue-600 border-b border-gray-100 group-hover:border-blue-100">${highlightText(row.mst, keyword)}</td>
+                    <td class="px-4 py-4 text-base font-semibold text-gray-800 border-b border-gray-100 group-hover:border-blue-100">${highlightText(row.name, keyword)}</td>
+                    <td class="px-4 py-4 text-base text-gray-700 border-b border-gray-100 group-hover:border-blue-100">${escapeHTML(row.rep)}</td>
+                    <td class="px-4 py-4 whitespace-nowrap text-base font-medium text-gray-600 border-b border-gray-100 group-hover:border-blue-100">${highlightText(row.cccd, keyword)}</td>
+                    <td class="px-4 py-4 text-base text-gray-600 border-b border-gray-100 group-hover:border-blue-100 line-clamp-2" title="${escapeHTML(row.industry)}">${escapeHTML(row.industry)}</td>
+                    <td class="px-4 py-4 text-base text-gray-600 border-b border-gray-100 group-hover:border-blue-100">${escapeHTML(row.address)} ${row.ward ? '- ' + escapeHTML(row.ward) : ''}</td>
+                    <td class="px-4 py-4 whitespace-nowrap text-base border-b border-gray-100 group-hover:border-blue-100">
+                        <span class="px-2.5 py-1 rounded-full text-sm font-medium border ${statusBadge}">
                             ${safeStatus || 'Không xác định'}
                         </span>
                     </td>
-                    <td class="px-4 py-4 whitespace-nowrap text-sm font-semibold text-blue-800 bg-blue-50/30 border-b border-gray-100 group-hover:border-blue-100">${escapeHTML(row.manager)}</td>
+                    <td class="px-4 py-4 whitespace-nowrap text-base font-semibold text-blue-800 bg-blue-50/30 border-b border-gray-100 group-hover:border-blue-100">${escapeHTML(row.manager)}</td>
                 `;
                 resultBody.appendChild(tr);
             });
