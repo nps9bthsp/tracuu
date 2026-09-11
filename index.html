@@ -493,10 +493,26 @@
                 const tr = document.createElement('tr');
                 tr.className = "hover:bg-blue-50/80 transition-colors duration-150 group";
                 
-                const safeStatus = escapeHTML(row.status);
-                const statusBadge = safeStatus.toLowerCase().includes('ngừng') || safeStatus.toLowerCase().includes('đóng') || safeStatus.toLowerCase().includes('tạm nghỉ')
-                    ? 'bg-red-100 text-red-700 border-red-200' 
-                    : 'bg-green-100 text-green-700 border-green-200';
+                // Cập nhật logic phân loại màu sắc và icon cho cột trạng thái
+                const safeStatus = escapeHTML(row.status) || 'Không xác định';
+                const statusLower = safeStatus.toLowerCase();
+                
+                let statusBadge = '';
+                let statusIcon = '';
+                
+                if (statusLower.includes('đang hoạt động')) {
+                    statusBadge = 'bg-emerald-50 text-emerald-700 border-emerald-200 ring-1 ring-emerald-500/20';
+                    statusIcon = '<i class="fa-solid fa-circle-check mr-1.5 text-emerald-500"></i>';
+                } else if (statusLower.includes('ngừng') || statusLower.includes('đóng') || statusLower.includes('chấm dứt') || statusLower.includes('hủy')) {
+                    statusBadge = 'bg-rose-50 text-rose-700 border-rose-200 ring-1 ring-rose-500/20';
+                    statusIcon = '<i class="fa-solid fa-circle-xmark mr-1.5 text-rose-500"></i>';
+                } else if (statusLower.includes('tạm')) {
+                    statusBadge = 'bg-amber-50 text-amber-700 border-amber-200 ring-1 ring-amber-500/20';
+                    statusIcon = '<i class="fa-solid fa-circle-pause mr-1.5 text-amber-500"></i>';
+                } else {
+                    statusBadge = 'bg-slate-50 text-slate-600 border-slate-200 ring-1 ring-slate-500/20';
+                    statusIcon = '<i class="fa-solid fa-circle-info mr-1.5 text-slate-400"></i>';
+                }
 
                 // Đã sửa: Bổ sung align-top để các cột căn ngang nhau, và đưa line-clamp-2 vào bên trong thẻ <div> thay vì nằm trực tiếp trên thẻ <td>
                 tr.innerHTML = `
@@ -510,8 +526,8 @@
                     </td>
                     <td class="px-4 py-4 align-top text-base text-gray-600 border-b border-gray-100 group-hover:border-blue-100">${escapeHTML(row.address)} ${row.ward ? '- ' + escapeHTML(row.ward) : ''}</td>
                     <td class="px-4 py-4 align-top whitespace-nowrap text-base border-b border-gray-100 group-hover:border-blue-100">
-                        <span class="px-2.5 py-1 rounded-full text-sm font-medium border ${statusBadge}">
-                            ${safeStatus || 'Không xác định'}
+                        <span class="inline-flex items-center px-2.5 py-1.5 rounded-full text-sm font-medium border shadow-sm ${statusBadge}">
+                            ${statusIcon} ${safeStatus}
                         </span>
                     </td>
                     <td class="px-4 py-4 align-top whitespace-nowrap text-base font-semibold text-blue-800 bg-blue-50/30 border-b border-gray-100 group-hover:border-blue-100">${escapeHTML(row.manager)}</td>
