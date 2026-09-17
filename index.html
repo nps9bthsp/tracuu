@@ -44,29 +44,7 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex flex-col md:flex-row justify-between items-center gap-4">
             <div class="flex items-center space-x-4 w-full md:w-auto">
                 <div class="w-16 h-16 bg-white rounded-full flex items-center justify-center p-0.5 shadow-md overflow-hidden relative border-2 border-yellow-400 shrink-0">
-                    <svg id="app-logo" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" class="w-full h-full object-contain rounded-full" aria-label="Logo Thuế Nhà Nước">
-                        <circle cx="60" cy="60" r="58" fill="#DA251D"/>
-                        <path d="M 60,110 C 10,110 5,45 15,30 C 20,45 10,80 35,95" fill="none" stroke="#FFC627" stroke-width="3" stroke-linecap="round"/>
-                        <path d="M 60,110 C 110,110 115,45 105,30 C 100,45 110,80 85,95" fill="none" stroke="#FFC627" stroke-width="3" stroke-linecap="round"/>
-                        <g fill="#FFC627">
-                            <path d="M 18,35 C 22,35 24,40 22,45 C 15,40 16,35 18,35 Z"/>
-                            <path d="M 21,48 C 27,47 27,52 25,57 C 18,53 18,48 21,48 Z"/>
-                            <path d="M 25,62 C 30,60 31,65 28,70 C 21,66 21,62 25,62 Z"/>
-                            <path d="M 31,75 C 36,72 38,77 35,82 C 28,79 28,75 31,75 Z"/>
-                            <path d="M 102,35 C 98,35 96,40 98,45 C 105,40 104,35 102,35 Z"/>
-                            <path d="M 99,48 C 93,47 93,52 95,57 C 102,53 102,48 99,48 Z"/>
-                            <path d="M 95,62 C 90,60 89,65 92,70 C 99,66 99,62 95,62 Z"/>
-                            <path d="M 89,75 C 84,72 82,77 85,82 C 92,79 92,75 89,75 Z"/>
-                        </g>
-                        <polygon points="60,10 67,29 89,29 72,42 78,64 60,51 42,64 48,42 31,29 53,29" fill="#FFC627"/>
-                        <g transform="translate(60, 102) scale(1.1)">
-                            <path d="M-6,-4 L-3,-10 L3,-10 L6,-4 L12,-2 L10,4 L4,4 L2,10 L-2,10 L-4,4 L-10,4 L-12,-2 Z" fill="#FFC627"/>
-                            <circle cx="0" cy="0" r="5" fill="#DA251D" />
-                            <circle cx="0" cy="0" r="2" fill="#FFC627" />
-                        </g>
-                        <text x="60" y="78" font-family="Arial, sans-serif" font-weight="bold" font-size="13" fill="#FFC627" text-anchor="middle" letter-spacing="1">THUẾ</text>
-                        <text x="60" y="90" font-family="Arial, sans-serif" font-weight="bold" font-size="9" fill="#FFC627" text-anchor="middle" letter-spacing="0.5">NHÀ NƯỚC</text>
-                    </svg>
+                    <img id="app-logo" src="https://upload.wikimedia.org/wikipedia/commons/a/a1/Emblem_of_Vietnam.svg" alt="Quốc huy Việt Nam" class="w-full h-full object-contain rounded-full" onerror="this.onerror=null; this.src='https://placehold.co/120x120/DA251D/FFC627?text=VN';">
                 </div>
                 <div>
                     <h1 class="text-xl sm:text-2xl font-bold tracking-wide uppercase text-yellow-400">Chiến dịch làm sạch mã số thuế</h1>
@@ -80,34 +58,19 @@
                     <i class="fa-solid fa-cloud-arrow-down sm:mr-2"></i> 
                     <span class="hidden sm:inline">Làm mới dữ liệu</span>
                 </button>
-                
-                <!-- Nút mở file máy tính (Đã bỏ class hidden để hiển thị) -->
-                <input type="file" id="local-file-input" accept=".csv" class="hidden">
-                <button id="upload-local-btn" class="bg-yellow-500 hover:bg-yellow-400 text-blue-900 px-3 sm:px-4 py-2.5 rounded-lg shadow-md transition-colors flex items-center text-sm font-bold border border-yellow-300 focus:outline-none focus:ring-2 focus:ring-yellow-400 shrink-0">
-                    <i class="fa-solid fa-folder-open sm:mr-2"></i> 
-                    <span class="hidden sm:inline">Mở file máy tính</span>
-                </button>
             </div>
         </div>
     </header>
 
     <main class="max-w-[98%] mx-auto py-6 sm:py-8 flex-grow w-full space-y-6">
-        
-        <div class="flex items-center justify-center bg-blue-50 rounded-lg p-3 border border-blue-100 shadow-sm md:hidden">
-            <div class="text-sm flex items-center">
-                <i class="fa-solid fa-server text-green-500 mr-2"></i>
-                <span class="text-blue-800">Dữ liệu: </span>
-                <span id="db-count-mobile" class="font-bold text-blue-700 text-base ml-1">Đang tải...</span>
-            </div>
-        </div>
 
         <div class="bg-white rounded-xl shadow-sm p-4 sm:p-6 border border-gray-200 relative overflow-hidden">
             <div class="absolute top-0 left-0 w-1 h-full bg-blue-500"></div>
             <form id="search-form" class="flex flex-col md:flex-row gap-4 items-end">
                 <div class="flex-1 w-full relative">
-                    <!-- Cập nhật Label để mô tả tính năng tìm kiếm rộng hơn -->
+                    <!-- Cập nhật Label để mô tả tính năng tìm kiếm chính xác -->
                     <label for="mst-input" class="block text-sm font-semibold text-gray-700 mb-2">
-                        <i class="fa-solid fa-barcode text-blue-500 mr-1"></i> Nhập MST, CCCD, Tên DN, Người đại diện, Địa chỉ... (Hỗ trợ đa từ khóa không dấu)
+                        <i class="fa-solid fa-barcode text-blue-500 mr-1"></i> Nhập chính xác MST, CCCD, Tên DN hoặc Người ĐD (Không phân biệt hoa thường/dấu)
                     </label>
                     <div class="relative rounded-lg focus-ring bg-gray-50 border border-gray-300 transition-all flex items-center">
                         <div class="pl-4 flex items-center pointer-events-none text-gray-400">
@@ -115,7 +78,7 @@
                         </div>
                         <input type="text" id="mst-input" name="search_keyword"
                             class="block w-full pl-3 pr-10 py-3 sm:py-3.5 bg-transparent outline-none text-gray-800 font-medium text-base sm:text-lg placeholder-gray-400"
-                            placeholder="Nhập bất kỳ thông tin nào cần tra cứu (VD: nguyễn vinh tế)..." autocomplete="off" disabled>
+                            placeholder="Nhập chính xác thông tin cần tra cứu..." autocomplete="off" disabled>
                         <button type="button" id="clear-input-btn" class="absolute right-3 text-gray-400 hover:text-gray-600 hidden focus:outline-none p-2">
                             <i class="fa-solid fa-circle-xmark text-lg"></i>
                         </button>
@@ -134,10 +97,6 @@
                     <h2 class="text-base font-bold text-gray-800 uppercase tracking-wide flex items-center">
                         <i class="fa-solid fa-list-check text-blue-600 mr-2"></i> Kết quả tra cứu
                     </h2>
-                    <div class="hidden md:flex text-sm items-center bg-blue-100/50 rounded px-2.5 py-1 border border-blue-200">
-                        <span class="text-blue-800">Tổng DL: </span>
-                        <span id="db-count" class="font-bold text-blue-900 ml-1">Đang tải...</span>
-                    </div>
                 </div>
                 <span id="result-count" class="text-sm font-semibold text-blue-700 bg-blue-100 px-3 py-1 rounded-full hidden border border-blue-200"></span>
             </div>
@@ -214,8 +173,6 @@
         let globalDatabase = [];
         const MAX_RENDER_RESULTS = 100; 
 
-        const dbCountEl = document.getElementById('db-count');
-        const dbCountMobileEl = document.getElementById('db-count-mobile');
         const resultBody = document.getElementById('result-body');
         const searchInput = document.getElementById('mst-input');
         const clearInputBtn = document.getElementById('clear-input-btn');
@@ -226,8 +183,6 @@
         const resultCount = document.getElementById('result-count');
         const emptyStateHTML = document.getElementById('empty-state').outerHTML;
         const toggleImportBtn = document.getElementById('toggle-import-btn');
-        const localFileInput = document.getElementById('local-file-input');
-        const uploadLocalBtn = document.getElementById('upload-local-btn');
         const toastContainer = document.getElementById('toast-container');
 
         const fallbackCSV = `
@@ -362,24 +317,23 @@
                             const status = (columns[7] || "").trim();
                             const manager = (columns[8] || "").trim();
                             
-                            // CẢI TIẾN: Gom tất cả các trường quan trọng vào chuỗi tìm kiếm
-                            const rawSearchStr = `${mst} ${cccd} ${name} ${rep} ${address} ${ward} ${industry} ${manager}`.toLowerCase();
-                            const optimizedSearchStr = removeVietnameseTones(rawSearchStr);
+                            // Tạo các trường tìm kiếm đã lọc bỏ dấu để so sánh chính xác tuyệt đối
+                            const optMst = removeVietnameseTones(mst);
+                            const optCccd = removeVietnameseTones(cccd);
+                            const optName = removeVietnameseTones(name);
+                            const optRep = removeVietnameseTones(rep);
 
                             globalDatabase.push({
-                                mst, cccd, name, rep, industry, address, ward, status, manager, optimizedSearchStr
+                                mst, cccd, name, rep, industry, address, ward, status, manager, 
+                                optMst, optCccd, optName, optRep
                             });
                         }
                     }
 
-                    const countStr = globalDatabase.length.toLocaleString() + " dòng";
-                    dbCountEl.textContent = countStr;
-                    dbCountMobileEl.textContent = countStr;
-                    
                     document.getElementById('warning-banner')?.classList.add('hidden');
                     
                     searchInput.disabled = false;
-                    searchInput.placeholder = "Nhập MST, Tên DN, Địa chỉ, Đại diện... (VD: nguyễn vinh tế)";
+                    searchInput.placeholder = "Nhập chính xác MST, CCCD, Tên DN hoặc Người đại diện...";
                     searchInput.focus();
                     
                     resultBody.innerHTML = `
@@ -405,9 +359,8 @@
                 return;
             }
 
-            // Chuyển đổi từ khóa sang không dấu và Cắt thành mảng các từ khóa (Tách bởi khoảng trắng)
-            const optimizedKeywordStr = removeVietnameseTones(rawKeyword);
-            const searchTerms = optimizedKeywordStr.split(/\s+/).filter(term => term.length > 0);
+            // Chuyển đổi từ khóa sang không dấu
+            const optimizedKeyword = removeVietnameseTones(rawKeyword);
 
             btnText.textContent = "Đang tìm...";
             btnSpinner.classList.remove('hidden');
@@ -415,9 +368,12 @@
 
             setTimeout(() => {
                 try {
-                    // CẢI TIẾN: Logic tìm kiếm AND - Dòng dữ liệu phải chứa TẤT CẢ các từ khóa người dùng nhập vào
+                    // CẢI TIẾN: Logic tìm kiếm CHÍNH XÁC. Phải nhập đúng MST, CCCD, Tên hoặc Người ĐD thì mới hiện kết quả
                     const matchedResults = globalDatabase.filter(row => {
-                        return searchTerms.every(term => row.optimizedSearchStr.includes(term));
+                        return row.optMst === optimizedKeyword ||
+                               row.optCccd === optimizedKeyword ||
+                               row.optName === optimizedKeyword ||
+                               row.optRep === optimizedKeyword;
                     });
 
                     const totalFound = matchedResults.length;
@@ -557,58 +513,6 @@
                 icon.classList.remove('fa-arrows-rotate', 'fa-spin');
                 icon.classList.add('fa-cloud-arrow-down');
             });
-        });
-
-        uploadLocalBtn.addEventListener('click', () => {
-            localFileInput.click();
-        });
-
-        localFileInput.addEventListener('change', function(e) {
-            const file = e.target.files[0];
-            if (!file) return;
-
-            if(!file.name.toLowerCase().endsWith('.csv')) {
-                showToast("Vui lòng chọn file định dạng .CSV", "error");
-                e.target.value = '';
-                return;
-            }
-
-            resultBody.innerHTML = emptyStateHTML;
-            document.getElementById('loading-text').textContent = "Đang phân tích dữ liệu từ file máy tính...";
-            searchInput.disabled = true;
-            resultCount.classList.add('hidden');
-            document.getElementById('warning-banner')?.classList.add('hidden');
-
-            const reader = new FileReader();
-            
-            reader.onload = function(event) {
-                try {
-                    const csvText = event.target.result;
-                    processCSVData(csvText);
-                    
-                    showToast(`Đã tải thành công file: ${file.name}`, 'success');
-                    
-                    const successTr = document.createElement('tr');
-                    successTr.innerHTML = `
-                        <td colspan="9" class="px-6 py-3 text-center bg-yellow-50 text-yellow-800 text-sm font-bold border-b border-yellow-200 shadow-sm">
-                            <i class="fa-solid fa-folder-open mr-2 text-yellow-600"></i> Đang hiển thị dữ liệu Offline từ file: <span class="italic text-gray-700">${escapeHTML(file.name)}</span>
-                        </td>
-                    `;
-                    resultBody.insertBefore(successTr, resultBody.firstChild);
-                    
-                } catch (err) {
-                    showToast("Lỗi định dạng file: " + err.message, "error");
-                    fetchExternalData(); 
-                }
-            };
-
-            reader.onerror = function() {
-                showToast("Không thể đọc file. Trình duyệt đang chặn quyền truy cập.", "error");
-                fetchExternalData();
-            };
-
-            reader.readAsText(file);
-            e.target.value = ''; 
         });
 
         window.onload = function() {
