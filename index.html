@@ -91,7 +91,58 @@
             </form>
         </div>
 
-        <div class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden flex flex-col h-[600px]">
+        <!-- Cảnh báo nổi bật: ĐÃ ĐƯỢC DI CHUYỂN RA NGOÀI ĐỂ KHÔNG CHIẾM DIỆN TÍCH BẢNG TRÊN MOBILE -->
+        <div id="warning-banner" class="hidden bg-white border border-red-200 border-l-4 border-l-red-500 p-4 sm:p-5 rounded-xl shadow-sm relative overflow-hidden transition-all duration-300">
+            <!-- Hiệu ứng nền góc phải -->
+            <div class="absolute top-0 right-0 -mt-4 -mr-4 w-16 h-16 sm:w-24 sm:h-24 bg-red-50 rounded-full opacity-60 pointer-events-none"></div>
+            
+            <div class="flex flex-col sm:flex-row items-start relative z-10">
+                <div class="flex-shrink-0 mb-3 sm:mb-0 sm:mt-1 bg-red-100 p-2.5 sm:p-3 rounded-full shadow-inner border border-red-200 inline-flex">
+                    <i class="fa-solid fa-triangle-exclamation text-red-600 text-xl sm:text-2xl animate-pulse"></i>
+                </div>
+                <div class="sm:ml-4 w-full">
+                    <h3 class="text-base sm:text-lg font-bold text-red-700 uppercase tracking-wide mb-2 flex items-center">
+                        Thông báo quan trọng
+                    </h3>
+                    <p class="text-sm sm:text-[15px] text-gray-700 mb-4 font-medium leading-relaxed text-justify">
+                        Bạn là người đại diện pháp luật của Doanh nghiệp/Hộ kinh doanh có <span class="font-bold text-red-700 bg-red-50 px-1.5 py-0.5 rounded border border-red-100 whitespace-nowrap">trạng thái 03, 06</span> cần liên hệ hoặc đến trực tiếp cơ quan thuế để làm các thủ tục đóng mã số thuế theo quy định.
+                    </p>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-4 mb-4">
+                        <!-- Block Hộ kinh doanh -->
+                        <div class="bg-orange-50 border border-orange-200 rounded-lg p-3.5 sm:p-4 flex flex-col transition hover:shadow-sm">
+                            <span class="text-[11px] sm:text-xs font-bold text-orange-800 uppercase mb-1.5 flex items-center"><i class="fa-solid fa-store mr-1.5 text-orange-600"></i> Dành cho Hộ kinh doanh</span>
+                            <span class="text-xs sm:text-sm text-orange-900 mb-3 opacity-90 leading-snug">Tổ Quản lý, hỗ trợ hộ kinh doanh, cá nhân kinh doanh</span>
+                            <a href="tel:02963867954" class="inline-flex items-center justify-center mt-auto w-full bg-white border-2 border-orange-300 text-orange-700 hover:bg-orange-500 hover:border-orange-500 hover:text-white px-3 sm:px-4 py-2.5 rounded-md text-sm font-bold shadow-sm transition-all focus:ring-2 focus:ring-orange-400 focus:outline-none active:scale-[0.98]">
+                                <i class="fa-solid fa-phone-volume mr-2"></i> 02963.867954
+                            </a>
+                        </div>
+                        
+                        <!-- Block Doanh nghiệp -->
+                        <div class="bg-blue-50 border border-blue-200 rounded-lg p-3.5 sm:p-4 flex flex-col transition hover:shadow-sm">
+                            <span class="text-[11px] sm:text-xs font-bold text-blue-800 uppercase mb-1.5 flex items-center"><i class="fa-solid fa-building mr-1.5 text-blue-600"></i> Dành cho Doanh nghiệp</span>
+                            <span class="text-xs sm:text-sm text-blue-900 mb-3 opacity-90 leading-snug">Tổ Quản lý, hỗ trợ doanh nghiệp</span>
+                            <a href="tel:02963867955" class="inline-flex items-center justify-center mt-auto w-full bg-white border-2 border-blue-300 text-blue-700 hover:bg-blue-600 hover:border-blue-600 hover:text-white px-3 sm:px-4 py-2.5 rounded-md text-sm font-bold shadow-sm transition-all focus:ring-2 focus:ring-blue-400 focus:outline-none active:scale-[0.98]">
+                                <i class="fa-solid fa-phone-volume mr-2"></i> 02963.867955
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Block Địa chỉ -->
+                    <div class="bg-gray-50 border border-gray-200 rounded-lg p-3.5 flex flex-row items-start transition hover:shadow-sm">
+                        <div class="bg-white p-2 rounded shadow-sm border border-gray-200 mr-3 flex-shrink-0 mt-0.5">
+                            <i class="fa-solid fa-location-dot text-red-500 text-base sm:text-lg"></i>
+                        </div>
+                        <div>
+                            <span class="block text-[10px] sm:text-xs font-bold text-gray-500 uppercase mb-1">Hoặc đến trực tiếp cơ quan thuế tại</span>
+                            <span class="text-xs sm:text-[15px] font-semibold text-gray-800 leading-snug block">Thuế cơ sở 8 tỉnh An Giang – số 50 đường Phan Đình Phùng, phường Châu Đốc, tỉnh An Giang.</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden flex flex-col h-[500px] lg:h-[600px]">
             <div class="px-3 sm:px-6 py-3 sm:py-4 bg-gray-50 border-b border-gray-200 flex flex-col sm:flex-row gap-2 justify-between sm:items-center shrink-0">
                 <div class="flex items-center gap-4">
                     <h2 class="text-sm sm:text-base font-bold text-gray-800 uppercase tracking-wide flex items-center">
@@ -101,57 +152,6 @@
                 <span id="result-count" class="text-xs sm:text-sm font-semibold text-blue-700 bg-blue-100 px-2 sm:px-3 py-1 rounded-full hidden border border-blue-200 self-start sm:self-auto break-words max-w-full"></span>
             </div>
             
-            <!-- Cảnh báo nổi bật (Ẩn mặc định) - ĐÃ ĐƯỢC THIẾT KẾ LẠI UI -->
-            <div id="warning-banner" class="hidden bg-white border border-red-200 border-l-4 border-l-red-500 p-3 sm:p-5 m-3 sm:mx-6 sm:mt-5 rounded-xl shadow-md shrink-0 relative overflow-hidden transition-all duration-300">
-                <!-- Hiệu ứng nền góc phải -->
-                <div class="absolute top-0 right-0 -mt-4 -mr-4 w-16 h-16 sm:w-24 sm:h-24 bg-red-50 rounded-full opacity-60 pointer-events-none"></div>
-                
-                <div class="flex flex-col sm:flex-row items-start relative z-10">
-                    <div class="flex-shrink-0 mb-2.5 sm:mb-0 sm:mt-1 bg-red-100 p-2 sm:p-2.5 rounded-full shadow-inner border border-red-200 inline-flex">
-                        <i class="fa-solid fa-triangle-exclamation text-red-600 text-lg sm:text-xl animate-pulse"></i>
-                    </div>
-                    <div class="sm:ml-4 w-full">
-                        <h3 class="text-base sm:text-lg font-bold text-red-700 uppercase tracking-wide mb-1.5 sm:mb-2 flex items-center">
-                            Thông báo quan trọng
-                        </h3>
-                        <p class="text-sm sm:text-[15px] text-gray-700 mb-3 sm:mb-4 font-medium leading-relaxed text-justify">
-                            Bạn là người đại diện pháp luật của Doanh nghiệp/Hộ kinh doanh có <span class="font-bold text-red-700 bg-red-50 px-1.5 py-0.5 rounded border border-red-100 whitespace-nowrap">trạng thái 03, 06</span> cần liên hệ hoặc đến trực tiếp cơ quan thuế để làm các thủ tục đóng mã số thuế theo quy định.
-                        </p>
-                        
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-4 mb-3 sm:mb-4">
-                            <!-- Block Hộ kinh doanh -->
-                            <div class="bg-orange-50 border border-orange-200 rounded-lg p-3 sm:p-3.5 flex flex-col transition hover:shadow-sm">
-                                <span class="text-[11px] sm:text-xs font-bold text-orange-800 uppercase mb-1 flex items-center"><i class="fa-solid fa-store mr-1.5 text-orange-600"></i> Dành cho Hộ kinh doanh</span>
-                                <span class="text-xs sm:text-sm text-orange-900 mb-2 sm:mb-3 opacity-90 leading-snug">Tổ Quản lý, hỗ trợ hộ kinh doanh, cá nhân kinh doanh</span>
-                                <a href="tel:02963867954" class="inline-flex items-center justify-center mt-auto w-full bg-white border-2 border-orange-300 text-orange-700 hover:bg-orange-500 hover:border-orange-500 hover:text-white px-3 sm:px-4 py-2 rounded-md text-sm font-bold shadow-sm transition-all focus:ring-2 focus:ring-orange-400 focus:outline-none active:scale-[0.98]">
-                                    <i class="fa-solid fa-phone-volume mr-2"></i> 02963.867954
-                                </a>
-                            </div>
-                            
-                            <!-- Block Doanh nghiệp -->
-                            <div class="bg-blue-50 border border-blue-200 rounded-lg p-3 sm:p-3.5 flex flex-col transition hover:shadow-sm">
-                                <span class="text-[11px] sm:text-xs font-bold text-blue-800 uppercase mb-1 flex items-center"><i class="fa-solid fa-building mr-1.5 text-blue-600"></i> Dành cho Doanh nghiệp</span>
-                                <span class="text-xs sm:text-sm text-blue-900 mb-2 sm:mb-3 opacity-90 leading-snug">Tổ Quản lý, hỗ trợ doanh nghiệp</span>
-                                <a href="tel:02963867955" class="inline-flex items-center justify-center mt-auto w-full bg-white border-2 border-blue-300 text-blue-700 hover:bg-blue-600 hover:border-blue-600 hover:text-white px-3 sm:px-4 py-2 rounded-md text-sm font-bold shadow-sm transition-all focus:ring-2 focus:ring-blue-400 focus:outline-none active:scale-[0.98]">
-                                    <i class="fa-solid fa-phone-volume mr-2"></i> 02963.867955
-                                </a>
-                            </div>
-                        </div>
-
-                        <!-- Block Địa chỉ -->
-                        <div class="bg-gray-50 border border-gray-200 rounded-lg p-3 flex flex-row items-start transition hover:shadow-sm">
-                            <div class="bg-white p-1.5 sm:p-2 rounded shadow-sm border border-gray-200 mr-2.5 sm:mr-3 flex-shrink-0 mt-0.5">
-                                <i class="fa-solid fa-location-dot text-red-500 text-base sm:text-lg"></i>
-                            </div>
-                            <div>
-                                <span class="block text-[10px] sm:text-xs font-bold text-gray-500 uppercase mb-0.5 sm:mb-1">Hoặc đến trực tiếp cơ quan thuế tại</span>
-                                <span class="text-xs sm:text-[15px] font-semibold text-gray-800 leading-snug block">Thuế cơ sở 8 tỉnh An Giang – số 50 đường Phan Đình Phùng, phường Châu Đốc, tỉnh An Giang.</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
             <div class="table-container overflow-auto flex-grow relative bg-white">
                 <table class="min-w-full divide-y divide-gray-300 relative">
                     <thead class="bg-gray-100 sticky top-0 z-10 shadow-sm">
